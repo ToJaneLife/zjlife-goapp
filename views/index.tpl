@@ -38,6 +38,8 @@
 
           <div class="inner cover">
             <h1 class="logo">致简生活</h1>
+            <img class="wxmp" src="/static/img/qrcode_for_gh_ec9c7cdf9ce4_430.jpg"></img>
+            <img class="weapp" src="/static/img/gh_8741695dd43d_430.jpg"></img>
             <p class="lead">您可以通过公众号或者小程序查询天气，快递等，为您提供更多更精彩的生活服务！</p>
             <p class="lead">
               <a href="https://github.com/ToJaneLife" class="btn btn-lg btn-default btn-outline" target="_self">项目地址</a>
