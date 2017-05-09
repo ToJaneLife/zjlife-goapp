@@ -12,7 +12,7 @@ type WeatherController struct {
 }
 
 // @Title SearchWeather
-// @Description Logs user into the system
+// @Description 查询实时天气和天气预报
 // @Param	city		query 	string	true		"The city for query"
 // @Success 200 {string} login success
 // @Failure 403 user not exist

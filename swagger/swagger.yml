@@ -1,0 +1,54 @@
+swagger: "2.0"
+info:
+  title: 致简生活服务API
+  description: 致简生活是一款微信小工具，您可以通过这个查看天气和快递等生活服务
+  version: 1.0.0
+  termsOfService: https://tolife.yuhanle.com
+  contact:
+    email: doxxs@foxmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /express/ebusinessOrderHandle:
+    post:
+      tags:
+      - express
+      description: 查询快递订单和状态
+      operationId: ExpressController.EbusinessOrderHandle
+      parameters:
+      - in: query
+        name: requestData
+        description: The requestData for query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} success'
+        "401":
+          description: wei chaxun dao danhao
+  /weather/weatherInfo:
+    get:
+      tags:
+      - weather
+      description: 查询实时天气和天气预报
+      operationId: WeatherController.SearchWeather
+      parameters:
+      - in: query
+        name: city
+        description: The city for query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: user not exist
+tags:
+- name: weather
+  description: |
+    Operations about object
+- name: express
+  description: |
+    Operations about object

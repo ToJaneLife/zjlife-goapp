@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/astaxie/beego/httplib"
 )
@@ -46,16 +47,6 @@ type Weather struct {
 	Adcode string `json:"adcode"`
 }
 
-    // "province": "上海",
-    // "city": "上海市",
-    // "adcode": "310000",
-    // "weather": "多云",
-    // "temperature": "23",
-    // "winddirection": "北",
-    // "windpower": "5",
-    // "humidity": "44",
-    // "reporttime": "2017-05-06 18:00:00"
-
 type AMapLives struct {
 	Lives []Live `json:"lives"`
 }
@@ -66,6 +57,7 @@ type Live struct {
 	Winddirection string `json:"winddirection"`
 	Windpower string `json:"windpower"`
 	Humidity string `json:"humidity"`
+	BackgroundImageUrl string `json:"backgroundImageUrl"`
 }
 
 type Forecasts struct {
@@ -81,8 +73,30 @@ type Forecasts struct {
   	Week string `json:"week"`
 }
 
+var (
+	background map[string]string
+)
+
 func init() {
-	
+	background = make(map[string]string)
+
+	background["大雨"] = "http://7xqhcq.com1.z0.glb.clouddn.com/zj-weapp/thunderstorm-358992_1280.jpg"
+	background["中雨"] = "http://7xqhcq.com1.z0.glb.clouddn.com/zj-weapp/weatherman-849792_1280.jpg"
+	background["小雨"] = "http://7xqhcq.com1.z0.glb.clouddn.com/zj-weapp/rain-985874_1280.jpg"
+
+	background["阵雨"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/xiaoyu.jpg"
+	background["暴雨"] = "http://7xqhcq.com1.z0.glb.clouddn.com/zj-weapp/lightning-503157_1920.jpg"
+	background["雷阵雨"] = "http://7xqhcq.com1.z0.glb.clouddn.com/zj-weapp/lightning-2102435_1920.jpg"
+
+	background["晴"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/qing2.jpg"
+	background["阴"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/yin.jpg"
+	background["多云"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/duoyun2.jpg"
+
+	background["雾"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/wu.jpg"
+	background["小雪"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/xue.jpg"
+	background["大雪"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/xue.jpg"
+
+	background["暴雪"] = "http://omiz2siz5.bkt.clouddn.com/zj-weapp/xue.jpg"
 }
 
 func SearchWeather(city string) (result map[string]interface{}) {
@@ -116,6 +130,10 @@ func SearchWeather(city string) (result map[string]interface{}) {
 		lastRes := WeatherTanslate(newWeather)
 		if err2 := json.Unmarshal([]byte(str2), &newLives); err2 == nil {
 			lastRes.Live = newLives.Lives[0]
+
+			value, _ := background[lastRes.Live.Weather]
+			lastRes.Live.BackgroundImageUrl = value
+			fmt.Sprintf(lastRes.Live.BackgroundImageUrl)
 		}
 
 		data["code"] = newWeather.Infocode
