@@ -25,6 +25,11 @@ func init() {
 				&controllers.ExpressController{},
 			),
 		),
+		beego.NSNamespace("/toilet",
+			beego.NSInclude(
+				&controllers.ToiletController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 	beego.Router("/", &controllers.MainController{})

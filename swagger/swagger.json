@@ -25,8 +25,8 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "name": "requestData",
-                        "description": "The requestData for query",
+                        "name": "RequestData",
+                        "description": "The RequestData for query",
                         "required": true,
                         "type": "string"
                     }
@@ -37,6 +37,32 @@
                     },
                     "401": {
                         "description": "wei chaxun dao danhao"
+                    }
+                }
+            }
+        },
+        "/toilet/around": {
+            "post": {
+                "tags": [
+                    "toilet"
+                ],
+                "description": "查询位置附近的厕所",
+                "operationId": "ToiletController.SearchToilet",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "location",
+                        "description": "The location for query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "{string} query success"
+                    },
+                    "999": {
+                        "description": "error"
                     }
                 }
             }
@@ -75,6 +101,10 @@
         },
         {
             "name": "express",
+            "description": "Operations about object\n"
+        },
+        {
+            "name": "toilet",
             "description": "Operations about object\n"
         }
     ]

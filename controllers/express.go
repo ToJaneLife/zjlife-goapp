@@ -13,7 +13,7 @@ type ExpressController struct {
 
 // @Title EbusinessOrderHandle
 // @Description 查询快递订单和状态
-// @Param	requestData		query 	string	true		"The requestData for query"
+// @Param	RequestData		query 	string	true		"The RequestData for query"
 // @Success 200 {string} success
 // @Failure 401 wei chaxun dao danhao
 // @router /ebusinessOrderHandle [post]

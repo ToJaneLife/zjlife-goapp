@@ -13,6 +13,13 @@ func init() {
 			AllowHTTPMethods: []string{"post"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["zjlife/controllers:ToiletController"] = append(beego.GlobalControllerRouter["zjlife/controllers:ToiletController"],
+		beego.ControllerComments{
+			Method: "SearchToilet",
+			Router: `/around`,
+			AllowHTTPMethods: []string{"post"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["zjlife/controllers:WeatherController"] = append(beego.GlobalControllerRouter["zjlife/controllers:WeatherController"],
 		beego.ControllerComments{
 			Method: "SearchWeather",
