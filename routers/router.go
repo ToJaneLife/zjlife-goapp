@@ -5,6 +5,7 @@
 // @TermsOfServiceUrl https://tolife.yuhanle.com
 // @License Apache 2.0
 // @LicenseUrl http://www.apache.org/licenses/LICENSE-2.0.html
+// @Schemes http, https
 package routers
 
 import (
