@@ -16,7 +16,7 @@
     "basePath": "/v1",
     "schemes": [
         "http",
-        "https"
+        " https"
     ],
     "paths": {
         "/express/ebusinessOrderHandle": {
@@ -31,6 +31,13 @@
                         "in": "query",
                         "name": "RequestData",
                         "description": "The RequestData for query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "RequestType",
+                        "description": "The RequestType for query",
                         "required": true,
                         "type": "string"
                     }

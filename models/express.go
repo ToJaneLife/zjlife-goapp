@@ -19,8 +19,7 @@ func init() {
 	eBusinessID = "1286240"
 }
 
-func EbusinessOrderHandle(requestData string) (result map[string]interface{}) {
-	requestType := "2002"
+func EbusinessOrderHandle(requestData string, requestType string) (result map[string]interface{}) {
 	w := md5.New()
 	io.WriteString(w, requestData + appKey)   //将str写入到w中
 	md5str := fmt.Sprintf("%x", w.Sum(nil))  //w.Sum(nil)将w的hash转成[]byte格式

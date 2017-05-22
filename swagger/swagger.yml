@@ -26,6 +26,11 @@ paths:
         description: The RequestData for query
         required: true
         type: string
+      - in: query
+        name: RequestType
+        description: The RequestType for query
+        required: true
+        type: string
       responses:
         "200":
           description: '{string} success'
