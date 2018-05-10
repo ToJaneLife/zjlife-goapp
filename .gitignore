@@ -4,6 +4,9 @@
 *.so
 
 # Folders
+vendor
+swagger
+./zjlife
 _obj
 _test
 

@@ -21,7 +21,7 @@ func (u *WeatherController) SearchWeather() {
 	city := u.GetString("city")
 	data := make(map[string]interface{})
 
-	if (len(city) != 0) {
+	if len(city) != 0 {
 		result := models.SearchWeather(city)
 		u.Data["json"] = result
 	} else {

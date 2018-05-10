@@ -21,7 +21,7 @@ func (t *ToiletController) SearchToilet() {
 	location := t.GetString("location")
 	data := make(map[string]interface{})
 
-	if (len(location) != 0) {
+	if len(location) != 0 {
 		result := models.SearchToilet(location)
 		t.Data["json"] = result
 	} else {

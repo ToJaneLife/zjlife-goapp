@@ -1,8 +1,8 @@
 package models
 
 import (
-	"encoding/base64"
 	"crypto/md5"
+	"encoding/base64"
 	"fmt"
 	"io"
 
@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	appKey string
+	appKey      string
 	eBusinessID string
 )
 
@@ -21,8 +21,8 @@ func init() {
 
 func EbusinessOrderHandle(requestData string, requestType string) (result map[string]interface{}) {
 	w := md5.New()
-	io.WriteString(w, requestData + appKey)   //将str写入到w中
-	md5str := fmt.Sprintf("%x", w.Sum(nil))  //w.Sum(nil)将w的hash转成[]byte格式
+	io.WriteString(w, requestData+appKey)   //将str写入到w中
+	md5str := fmt.Sprintf("%x", w.Sum(nil)) //w.Sum(nil)将w的hash转成[]byte格式
 	dataSign := base64.StdEncoding.EncodeToString([]byte(md5str))
 
 	//生成要访问的url
@@ -34,7 +34,7 @@ func EbusinessOrderHandle(requestData string, requestType string) (result map[st
 	req.Param("RequestType", requestType)
 	req.Param("DataSign", dataSign)
 	req.Param("DataType", "2")
-	
+
 	_, err := req.String()
 	if err != nil {
 		panic(err)

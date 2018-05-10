@@ -24,7 +24,7 @@ func (e *ExpressController) EbusinessOrderHandle() {
 
 	data := make(map[string]interface{})
 
-	if (len(requestData) != 0) {
+	if len(requestData) != 0 {
 		result := models.EbusinessOrderHandle(requestData, requestType)
 		e.Data["json"] = result
 	} else {

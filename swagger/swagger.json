@@ -1,12 +1,12 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "致简生活服务API",
+        "title": "致简生活 API",
         "description": "致简生活是一款微信小工具，您可以通过这个查看天气和快递等生活服务",
         "version": "1.0.0",
         "termsOfService": "https://tolife.yuhanle.com",
         "contact": {
-            "email": "doxxs@foxmail.com"
+            "email": "shiboven@foxmail.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -78,6 +78,101 @@
                 }
             }
         },
+        "/user/info": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "获取用户信息",
+                "operationId": "UserController.GetUserInfo",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "userid",
+                        "description": "userid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "00": {
+                        "description": "info success"
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "登录系统",
+                "operationId": "UserController.Login",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "weinfo",
+                        "description": "weinfo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/.interface{}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "00": {
+                        "description": "login success"
+                    },
+                    "01": {
+                        "description": "user not exist"
+                    }
+                }
+            }
+        },
+        "/user/update": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "登录系统",
+                "operationId": "UserController.Update",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "00": {
+                        "description": "update success"
+                    }
+                }
+            }
+        },
         "/weather/weatherInfo": {
             "get": {
                 "tags": [
@@ -105,6 +200,11 @@
             }
         }
     },
+    "definitions": {
+        ".interface{}": {
+            "type": "object"
+        }
+    },
     "tags": [
         {
             "name": "weather",
@@ -116,6 +216,10 @@
         },
         {
             "name": "toilet",
+            "description": "Operations about object\n"
+        },
+        {
+            "name": "user",
             "description": "Operations about object\n"
         }
     ]
